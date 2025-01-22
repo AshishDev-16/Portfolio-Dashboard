@@ -21,7 +21,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="bg-white border-b border-gray-100">
+    <div className="hidden md:block bg-white border-b border-gray-100">
       <div className="h-[72px] px-6 flex justify-end items-center">
         {/* Right Section */}
         <div className="flex items-center gap-8">

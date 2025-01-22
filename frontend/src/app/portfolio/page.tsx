@@ -7,6 +7,7 @@ import { getProjects } from "@/services/api";
 import ProjectCardSkeleton from "@/components/ProjectCardSkeleton";
 import debounce from 'lodash/debounce';
 import FilterDropdown, { FilterValues } from '@/components/FilterDropdown';
+import MobileFilterModal from '@/components/MobileFilterModal';
 
 const tabs = ["Project", "Saved", "Shared", "Achievement"];
 
@@ -65,13 +66,41 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="p-6 h-[calc(100vh-72px)]">
-      <div className="bg-white rounded-[15px] h-full flex flex-col overflow-hidden shadow-sm">
-        <div className="p-8 flex-1 overflow-y-auto scrollbar-thin">
-          <h1 className="text-[#303030] text-2xl font-semibold mb-6">Portfolio</h1>
+    <div className="p-0 md:p-6 h-[calc(100vh-72px)]">
+      <div className="bg-[#F5F5F5] md:bg-white md:rounded-[15px] h-full flex flex-col overflow-hidden md:shadow-sm">
+        <div className="p-4 md:p-8 flex-1 overflow-y-auto scrollbar-thin">
+          {/* Title and Icons - Mobile */}
+          <div className="flex justify-between items-center mb-4 md:hidden">
+            <h1 className="text-[#303030] text-xl font-semibold">Portfolio</h1>
+            <div className="flex gap-4">
+              <button className="relative">
+                <Image 
+                  src="/Vector (1).svg" 
+                  alt="Cart" 
+                  width={16} 
+                  height={20}
+                  className="text-[#DF5532]"
+                />
+              </button>
+              <button className="relative">
+                <Image 
+                  src="/Vector (2).svg" 
+                  alt="Notifications" 
+                  width={16} 
+                  height={20}
+                  className="text-[#DF5532]"
+                />
+                <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#DF5532] rounded-full"></span>
+              </button>
+            </div>
+          </div>
+
+          {/* Desktop Title */}
+          <h1 className="hidden md:block text-[#303030] text-2xl font-semibold mb-6">Portfolio</h1>
           
-          <div className="flex items-center justify-between mb-4">
-            {/* Tabs */}
+          {/* Desktop Layout */}
+          <div className="hidden md:flex items-center justify-between mb-4">
+            {/* Tabs - Desktop */}
             <div className="flex border-b border-gray-200">
               {tabs.map((tab) => (
                 <button
@@ -80,7 +109,7 @@ export default function Portfolio() {
                   className={`px-6 py-2 -mb-[1px] text-sm font-medium ${
                     activeTab === tab
                       ? "text-[#DF5532] border-b-2 border-[#DF5532]"
-                      : "text-[#8D8D8D] hover:text-gray-700"
+                      : "text-[#8D8D8D]"
                   }`}
                 >
                   {tab}
@@ -88,9 +117,8 @@ export default function Portfolio() {
               ))}
             </div>
 
-            {/* Filter and Search */}
+            {/* Search and Filter - Desktop */}
             <div className="flex items-center gap-4">
-              {/* Filter Button */}
               <div className="relative">
                 <button 
                   onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -108,29 +136,69 @@ export default function Portfolio() {
                 />
               </div>
 
-              {/* Search Bar */}
               <div className="relative flex items-center">
                 <input
                   type="text"
                   placeholder="Search a project"
                   value={searchTerm}
                   onChange={handleSearch}
-                  className="w-[343px] h-[44px] pl-4 pr-[52px] rounded-[10px] bg-white border border-[#E0E0E0] focus:outline-none focus:border-[#DF5532] focus:ring-1 focus:ring-[#DF5532] placeholder:text-[#8D8D8D] text-[#303030] shadow-[0px_1px_2px_rgba(0,0,0,0.05)]"
+                  className="w-[343px] h-11 pl-4 pr-12 rounded-lg bg-white border border-[#E0E0E0] focus:outline-none focus:border-[#DF5532] focus:ring-1 focus:ring-[#DF5532] placeholder:text-[#8D8D8D] text-[#303030]"
                 />
-                <div className="absolute right-[8px] top-1/2 -translate-y-1/2 w-[28px] h-[28px] flex items-center justify-center bg-[rgba(223,85,50,1)] rounded-full">
+                <button className="absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-[#DF5532] rounded-full">
                   <Image 
                     src="/ic_baseline-search.svg"
                     alt="Search"
                     width={16}
                     height={16}
                   />
-                </div>
+                </button>
               </div>
             </div>
           </div>
 
+          {/* Mobile Layout */}
+          <div className="md:hidden">
+            {/* Tabs - Mobile */}
+            <div className="flex overflow-x-auto scrollbar-none -mx-4 px-4 mb-4">
+              <div className="flex min-w-full">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`px-4 py-2 text-sm font-medium whitespace-nowrap ${
+                      activeTab === tab
+                        ? "text-[#DF5532] border-b-2 border-[#DF5532]"
+                        : "text-[#8D8D8D]"
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Search Bar - Mobile */}
+            <div className="relative flex items-center mb-4">
+              <input
+                type="text"
+                placeholder="Search a project"
+                value={searchTerm}
+                onChange={handleSearch}
+                className="w-full h-11 pl-4 pr-12 rounded-lg bg-white border border-[#E0E0E0] focus:outline-none focus:border-[#DF5532] focus:ring-1 focus:ring-[#DF5532] placeholder:text-[#8D8D8D] text-[#303030]"
+              />
+              <button className="absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-[#DF5532] rounded-full">
+                <Image 
+                  src="/ic_baseline-search.svg"
+                  alt="Search"
+                  width={16}
+                  height={16}
+                />
+              </button>
+            </div>
+          </div>
+
           {/* Project cards */}
-          <div className="flex flex-col gap-6 mt-6">
+          <div className="flex flex-col gap-3 md:gap-6">
             {loading ? (
               <>
                 <ProjectCardSkeleton />
@@ -155,6 +223,29 @@ export default function Portfolio() {
               ))
             )}
           </div>
+
+          {/* Mobile Filter Button */}
+          <button 
+            onClick={() => setIsFilterOpen(true)}
+            className="fixed bottom-24 left-1/2 -translate-x-1/2 md:hidden flex items-center gap-2 px-6 py-2.5 bg-[#DF5532] text-white rounded-full shadow-lg"
+          >
+            <Image 
+              src="/Vector (3).svg" 
+              alt="Filter" 
+              width={18} 
+              height={12}
+              className="text-white"
+            />
+            <span>Filter</span>
+          </button>
+
+          {/* Mobile Filter Modal */}
+          <MobileFilterModal
+            isOpen={isFilterOpen}
+            onClose={() => setIsFilterOpen(false)}
+            onApply={handleApplyFilters}
+            initialValues={activeFilters}
+          />
         </div>
       </div>
     </div>
