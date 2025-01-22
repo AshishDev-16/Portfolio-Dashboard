@@ -9,15 +9,15 @@ type FilterDropdownProps = {
 export type FilterValues = {
   language: string;
   priceRange: [number, number];
-  sortBy: 'newest' | 'oldest' | 'price-low' | 'price-high';
+  sortBy: 'newest' | 'oldest' | 'price_asc' | 'price_desc';
 };
 
 const languages = ['BAHASA SUNDA', 'BAHASA JAWA', 'BAHASA INDONESIA'];
 const sortOptions = [
   { value: 'newest', label: 'Newest First' },
   { value: 'oldest', label: 'Oldest First' },
-  { value: 'price-low', label: 'Price: Low to High' },
-  { value: 'price-high', label: 'Price: High to Low' },
+  { value: 'price_asc', label: 'Price: Low to High' },
+  { value: 'price_desc', label: 'Price: High to Low' },
 ];
 
 export default function FilterDropdown({ isOpen, onClose, onApply }: FilterDropdownProps) {

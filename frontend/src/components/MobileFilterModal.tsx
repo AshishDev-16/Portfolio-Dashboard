@@ -87,11 +87,14 @@ export default function MobileFilterModal({
           </label>
           <select
             value={filters.sortBy}
-            onChange={(e) => setFilters(prev => ({ ...prev, sortBy: e.target.value }))}
+            onChange={(e) => setFilters(prev => ({ 
+              ...prev, 
+              sortBy: e.target.value as FilterValues['sortBy']
+            }))}
             className="w-full p-2 border border-gray-200 rounded-lg"
           >
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
             <option value="price_asc">Price: Low to High</option>
             <option value="price_desc">Price: High to Low</option>
           </select>
