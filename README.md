@@ -1,4 +1,4 @@
-# Portfolio Dashboard
+# modern web Dashboard
 
 A modern web dashboard built with Next.js 14 and Strapi CMS, featuring a responsive design and advanced filtering capabilities.
 
@@ -98,8 +98,8 @@ The application is designed with a mobile-first philosophy, featuring:
 
 ## 📸 Screenshots
 
-![Screenshot 1](./public/images/screenshot1.png)
-![Screenshot 2](./public/images/screenshot2.png)
+![Screenshot 1](./public/screenshot1.png)
+![Screenshot 2](./public/screenshot2.png)
 
 ## 🤝 Contributing
 
