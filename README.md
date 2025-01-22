@@ -98,8 +98,8 @@ The application is designed with a mobile-first philosophy, featuring:
 
 ## 📸 Screenshots
 
-![Screenshot 1](./public/screenshot1.png)
-![Screenshot 2](./public/screenshot2.png)
+![Screenshot 1](./public/ss1.png)
+![Screenshot 2](./public/ss2.png)
 
 ## 🤝 Contributing
 
