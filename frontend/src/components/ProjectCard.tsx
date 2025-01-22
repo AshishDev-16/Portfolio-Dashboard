@@ -12,10 +12,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="group w-[811px] h-[161px] bg-white rounded-[10px] flex overflow-hidden shadow-[0px_0px_10px_rgba(0,0,0,0.1)] transition-all duration-300 hover:shadow-[0px_0px_20px_rgba(0,0,0,0.15)] hover:scale-[1.01] cursor-pointer">
       {/* Project Image */}
-      <div className="w-[200px] h-[161px] flex-shrink-0 overflow-hidden">
+      <div className="w-[200px] h-[161px] flex-shrink-0">
         <img
           src={project?.Image?.url 
-            ? `http://localhost:1337${project.Image.url}`
+            ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${project.Image.url}`
             : '/placeholder-image.jpg'
           }
           alt={project?.Title || 'Project image'}
