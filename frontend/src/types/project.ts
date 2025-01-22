@@ -20,7 +20,7 @@ export type Project = {
     documentId: string;
     ext: string;
     formats: {
-      thumbnail: any;
+      thumbnail: ImageFormat;
     };
     hash: string;
     height: number;
@@ -36,4 +36,10 @@ export type Project = {
     url: string;
     width: number;
   };
-}; 
+};
+
+interface ImageFormat {
+  url: string;
+  width: number;
+  height: number;
+} 

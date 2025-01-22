@@ -7,10 +7,10 @@ export type Profile = {
     documentId: string;
     ext: string;
     formats: {
-      thumbnail: any;
-      small: any;
-      medium: any;
-      large: any;
+      thumbnail: ImageFormat;
+      small: ImageFormat;
+      medium: ImageFormat;
+      large: ImageFormat;
     };
     hash: string;
     height: number;
@@ -32,4 +32,10 @@ export type Profile = {
   documentId: string;
   publishedAt: string;
   updatedAt: string;
-}; 
+};
+
+interface ImageFormat {
+  url: string;
+  width: number;
+  height: number;
+} 

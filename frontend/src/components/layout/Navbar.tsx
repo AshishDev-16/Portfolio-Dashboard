@@ -44,7 +44,9 @@ export default function Navbar() {
             <div className="w-[40px] h-[40px] rounded-full overflow-hidden">
               <img
                 src={profile?.Avatar?.url 
-                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${profile.Avatar.url}`
+                  ? profile.Avatar.url.startsWith('http')
+                    ? profile.Avatar.url
+                    : `${process.env.NEXT_PUBLIC_STRAPI_URL}${profile.Avatar.url}`
                   : '/placeholder-avatar.jpg'
                 }
                 alt={profile?.Name || 'Profile'}

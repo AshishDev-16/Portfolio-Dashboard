@@ -4,7 +4,7 @@ module.exports = [
     name: 'strapi::cors',
     config: {
       enabled: true,
-      origin: ['http://localhost:3000', 'your-vercel-app-url.vercel.app'],
+      origin: ['http://localhost:3000', 'your-vercel-url.vercel.app'],
       headers: '*',
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       credentials: true,

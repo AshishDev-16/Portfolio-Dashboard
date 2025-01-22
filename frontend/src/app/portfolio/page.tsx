@@ -31,7 +31,10 @@ export default function Portfolio() {
         setError(null);
         const data = await getProjects({ 
           search,
-          category: activeTab !== 'Project' ? activeTab : undefined 
+          category: activeTab !== 'Project' ? activeTab : undefined,
+          language: activeFilters.language,
+          priceRange: activeFilters.priceRange,
+          sortBy: activeFilters.sortBy
         });
         setProjects(data);
       } catch (err) {
@@ -40,7 +43,7 @@ export default function Portfolio() {
         setLoading(false);
       }
     }, 300),
-    [activeTab]
+    [activeTab, activeFilters]
   );
 
   // Handle search input change
